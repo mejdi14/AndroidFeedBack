@@ -1,62 +1,68 @@
 package asm.asmtunis.com.feedback;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.xw.repo.BubbleSeekBar;
-
 public class MainActivity extends AppCompatActivity {
-    BubbleSeekBar seekbar;
+    SeekBar seekBar;
+    int currentPosition=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar_luminosite);
-        seekbar = (BubbleSeekBar)findViewById(R.id.seekbar);
+        seekBar = (SeekBar) findViewById(R.id.seekBar_luminosite);
 
-       seekbar.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
-           @Override
-           public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
-               Log.d("value", "onProgressChanged: "+progress);
-           }
-
-           @Override
-           public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
-
-           }
-
-           @Override
-           public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
-
-           }
-       });
 
         seekBar.setProgress(0);
-        seekBar.incrementProgressBy(50);
-        seekBar.setMax(200);
 
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progress = progress / 10;
-                progress = progress * 10;
+            public void onProgressChanged(SeekBar seekBar, final int progress, final boolean fromUser) {
+               currentPosition=progress;
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                       // if (fromUser){
+                           // if (progress==currentPosition)
+                         //   updateProgress(progress);
+                     //   }
+                    }
+                };
+                new Handler().postDelayed(r, 600);
 
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+               // updateProgress(progress);
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                ObjectAnimator.ofInt(seekBar, "progress", 0).setDuration(100).start();
             }
         });
+    }
+
+    private void updateProgress(int progress) {
+        if (progress > 0 && progress < 10)
+            seekBar.setProgress(0);
+        else if (progress > 10 && progress < 30)
+            seekBar.setProgress(20);
+       else if (progress > 30 && progress < 50)
+            seekBar.setProgress(40);
+        else if (progress > 50 && progress < 70)
+            seekBar.setProgress(60);
+       else if (progress > 70 && progress < 90)
+            seekBar.setProgress(80);
+       else if (progress > 90 && progress < 100)
+            seekBar.setProgress(100);
+
     }
 }

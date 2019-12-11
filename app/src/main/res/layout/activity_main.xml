@@ -8,14 +8,13 @@
 
     <SeekBar
         android:id="@+id/seekBar_luminosite"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:splitTrack="false"
         android:progress="50"
         android:progressDrawable="@drawable/seekbar_style"
         android:thumb="@drawable/custom_thumb"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -28,10 +27,12 @@
         app:bsb_bubble_color="#00ffff00"
         app:bsb_bubble_text_color="#00ffff00"
         app:bsb_section_count="5"
+        android:visibility="gone"
+
         app:bsb_section_text_position="below_section_mark"
-        app:bsb_show_section_text="true"
-        app:bsb_show_thumb_text="true"
-        app:bsb_track_color="#ffffff"
+        app:bsb_show_section_text="false"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_color="#000000"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
