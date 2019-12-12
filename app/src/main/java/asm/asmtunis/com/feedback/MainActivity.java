@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -54,22 +55,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeFaceImage(int progress) {
-        if (progress > 0 && progress <= 25){
+        if (progress >= 0 && progress <= 25){
             int p= (int) ((progress)*10.2);
-            cry_face.setAlpha((int) (255-((progress-0)*10.2)));
+            Log.d("value", "changeFaceImage: "+p);
+            cry_face.setAlpha((int) (255-((progress)*10.2)));
             sad_face.setAlpha((int) ((progress)*10.2));
+           ok_face.setVisibility(View.GONE);
+            happy_face.setVisibility(View.GONE);
+            very_happy_face.setVisibility(View.GONE);
+            cry_face.setVisibility(View.VISIBLE);
+            sad_face.setVisibility(View.VISIBLE);
         }
         else if (progress > 25 && progress <= 50){
+            int p= (int) ((progress-25)*10.2);
+            Log.d("value2", "changeFaceImage: "+p);
             sad_face.setAlpha((int) (255-((progress-25)*10.2)));
             ok_face.setAlpha((int) ((progress-25)*10.2));
+            ok_face.setVisibility(View.VISIBLE);
+            happy_face.setVisibility(View.GONE);
+            very_happy_face.setVisibility(View.GONE);
+            cry_face.setVisibility(View.GONE);
+            sad_face.setVisibility(View.VISIBLE);
         }
         else if (progress > 50 && progress <= 75){
             ok_face.setAlpha((int) (255-((progress-50)*10.2)));
             happy_face.setAlpha((int) ((progress-50)*10.2));
+            ok_face.setVisibility(View.VISIBLE);
+            happy_face.setVisibility(View.VISIBLE);
+            very_happy_face.setVisibility(View.GONE);
+            cry_face.setVisibility(View.GONE);
+            sad_face.setVisibility(View.GONE);
         }
         else if (progress > 75 && progress <= 100){
             happy_face.setAlpha((int) (255-((progress-75)*10.2)));
             very_happy_face.setAlpha((int) ((progress-75)*10.2));
+            ok_face.setVisibility(View.GONE);
+            happy_face.setVisibility(View.VISIBLE);
+            very_happy_face.setVisibility(View.VISIBLE);
+            cry_face.setVisibility(View.GONE);
+            sad_face.setVisibility(View.GONE);
         }
 
 

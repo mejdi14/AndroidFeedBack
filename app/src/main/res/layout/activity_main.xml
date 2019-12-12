@@ -15,25 +15,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/seekbar"/>
+        app:layout_constraintBottom_toTopOf="@id/seekBar_luminosite"/>
 
     <ImageView
         android:id="@+id/sad_face"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:src="@drawable/sad_face"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/seekbar"/>
+        app:layout_constraintBottom_toTopOf="@id/seekBar_luminosite"/>
 
     <ImageView
         android:id="@+id/ok_face"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:src="@drawable/ok_face"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/seekbar"/>
+        app:layout_constraintBottom_toTopOf="@id/seekBar_luminosite"/>
 
     <ImageView
         android:id="@+id/happy_face"
@@ -43,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/seekbar"/>
+        app:layout_constraintBottom_toTopOf="@id/seekBar_luminosite"/>
 
     <ImageView
         android:id="@+id/very_happy_face"
@@ -53,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/seekbar"/>
+        app:layout_constraintBottom_toTopOf="@id/seekBar_luminosite"/>
 
     <SeekBar
         android:id="@+id/seekBar_luminosite"
@@ -67,24 +69,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-    <com.xw.repo.BubbleSeekBar
-        android:id="@+id/seekbar"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:bsb_auto_adjust_section_mark="true"
-        app:bsb_bubble_color="#00ffff00"
-        app:bsb_bubble_text_color="#00ffff00"
-        app:bsb_section_count="5"
-        android:visibility="gone"
 
-        app:bsb_section_text_position="below_section_mark"
-        app:bsb_show_section_text="false"
-        app:bsb_show_thumb_text="false"
-        app:bsb_track_color="#000000"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
