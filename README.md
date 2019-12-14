@@ -5,7 +5,7 @@
 
 
 <p align="center">
-	![](feedback.gif)
+	![alt-text](https://github.com/mejdi14/AndroidFeedBack/blob/master/photos/feedback.gif)
 	</p>
 
 ## Installation
