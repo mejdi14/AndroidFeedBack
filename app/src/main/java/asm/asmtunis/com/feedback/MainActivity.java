@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     SeekBar seekBar;
     int currentPosition=0;
     ConstraintLayout main_frame;
+    TextView state;
     ImageView cry_face,sad_face,ok_face,happy_face,very_happy_face;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         ok_face = (ImageView) findViewById(R.id.ok_face);
         happy_face = (ImageView) findViewById(R.id.happy_face);
         very_happy_face = (ImageView) findViewById(R.id.very_happy_face);
+        state = (TextView) findViewById(R.id.state);
 
 
         initValues();
@@ -60,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("value", "changeFaceImage: "+p);
             cry_face.setAlpha((int) (255-((progress)*10.2)));
             sad_face.setAlpha((int) ((progress)*10.2));
-           ok_face.setVisibility(View.GONE);
-            happy_face.setVisibility(View.GONE);
-            very_happy_face.setVisibility(View.GONE);
+           ok_face.setVisibility(View.INVISIBLE);
+            happy_face.setVisibility(View.INVISIBLE);
+            very_happy_face.setVisibility(View.INVISIBLE);
             cry_face.setVisibility(View.VISIBLE);
             sad_face.setVisibility(View.VISIBLE);
         }
@@ -72,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
             sad_face.setAlpha((int) (255-((progress-25)*10.2)));
             ok_face.setAlpha((int) ((progress-25)*10.2));
             ok_face.setVisibility(View.VISIBLE);
-            happy_face.setVisibility(View.GONE);
-            very_happy_face.setVisibility(View.GONE);
-            cry_face.setVisibility(View.GONE);
+            happy_face.setVisibility(View.INVISIBLE);
+            very_happy_face.setVisibility(View.INVISIBLE);
+            cry_face.setVisibility(View.INVISIBLE);
             sad_face.setVisibility(View.VISIBLE);
         }
         else if (progress > 50 && progress <= 75){
@@ -82,18 +85,18 @@ public class MainActivity extends AppCompatActivity {
             happy_face.setAlpha((int) ((progress-50)*10.2));
             ok_face.setVisibility(View.VISIBLE);
             happy_face.setVisibility(View.VISIBLE);
-            very_happy_face.setVisibility(View.GONE);
-            cry_face.setVisibility(View.GONE);
-            sad_face.setVisibility(View.GONE);
+            very_happy_face.setVisibility(View.INVISIBLE);
+            cry_face.setVisibility(View.INVISIBLE);
+            sad_face.setVisibility(View.INVISIBLE);
         }
         else if (progress > 75 && progress <= 100){
             happy_face.setAlpha((int) (255-((progress-75)*10.2)));
             very_happy_face.setAlpha((int) ((progress-75)*10.2));
-            ok_face.setVisibility(View.GONE);
+            ok_face.setVisibility(View.INVISIBLE);
             happy_face.setVisibility(View.VISIBLE);
             very_happy_face.setVisibility(View.VISIBLE);
-            cry_face.setVisibility(View.GONE);
-            sad_face.setVisibility(View.GONE);
+            cry_face.setVisibility(View.INVISIBLE);
+            sad_face.setVisibility(View.INVISIBLE);
         }
 
 
@@ -114,19 +117,36 @@ public class MainActivity extends AppCompatActivity {
         ok_face.setAlpha(250);
         happy_face.setAlpha(0);
         very_happy_face.setAlpha(0);
+
+        float[] hsvColor = {0, 1, 200};
+        hsvColor[0] = 100f * 50 /150;
+        hsvColor[0]+=30;
+        main_frame.setBackgroundColor(Color.HSVToColor(hsvColor));
+
+        state.setText("It's ok");
     }
 
     private void updateProgress(int progress) {
-        if (progress > 0 && progress <= 13)
+        if (progress >= 0 && progress <= 13){
+            state.setText("Horrible");
             ObjectAnimator.ofInt(seekBar, "progress", 0).setDuration(100).start();
-        else if (progress > 13 && progress <= 37)
+        }
+        else if (progress > 13 && progress <= 37){
+            state.setText("Bad");
             ObjectAnimator.ofInt(seekBar, "progress", 25).setDuration(100).start();
-       else if (progress > 37 && progress <= 63)
+        }
+       else if (progress > 37 && progress <= 63){
+            state.setText("It's ok");
             ObjectAnimator.ofInt(seekBar, "progress", 50).setDuration(100).start();
-        else if (progress > 63 && progress <= 87)
+        }
+        else if (progress > 63 && progress <= 87){
+            state.setText("Good");
             ObjectAnimator.ofInt(seekBar, "progress", 75).setDuration(100).start();
-       else if (progress > 87 && progress <= 100)
+        }
+       else if (progress > 87 && progress <= 100){
+            state.setText("Excellent !");
             ObjectAnimator.ofInt(seekBar, "progress", 100).setDuration(100).start();
+        }
     }
 
 }
