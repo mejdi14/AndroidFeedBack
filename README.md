@@ -5,7 +5,7 @@
 
 
 
-	![](photos/feedback.gif)
+![](photos/feedback.gif)
 	
 
 ## Installation
