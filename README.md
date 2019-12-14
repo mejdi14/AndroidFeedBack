@@ -5,7 +5,7 @@
 
 
 <p align="center">
-	![](https://github.com/mejdi14/AndroidFeedBack/tree/master/photos/feedback.gif)
+	![](feedback.gif)
 	</p>
 
 ## Installation
