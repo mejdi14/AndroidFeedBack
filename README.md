@@ -5,7 +5,7 @@
 
 
 
-	![alt-text](https://github.com/mejdi14/AndroidFeedBack/blob/master/photos/feedback.gif)
+	![](photos/feedback.gif)
 	
 
 ## Installation
