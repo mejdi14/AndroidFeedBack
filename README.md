@@ -9,4 +9,4 @@
 
 ## Contributing
 
-Any contributions, large or small, major features, bug fixes, are welcomed and appreciated
+Any contributions, large or small, major features, bug fixes, are welcomed and appreciated !
